@@ -14,11 +14,13 @@ export function Pricing() {
   const normalMin = 8;
   const normalMax = 24;
   const discount = 25;
+  const viewConstant = 6.25;
   const [price, setPrice] = useState(normalMin * 2);
   const [min, setMin] = useState(normalMin);
   const [max, setMax] = useState(normalMax);
   const [showYearlyPrice, setShowYearlyPrice] = useState(false);
   const [pricePerLabel, setPricePerLabel] = useState("month");
+  const [view, setView] = useState(price * viewConstant);
 
   const switchPrice = (e) => {
     setShowYearlyPrice(!showYearlyPrice);
@@ -48,7 +50,7 @@ export function Pricing() {
   return (
     <Article>
       <Section>
-        <p>100K PAGEVIEWS</p>
+        <h2>{view}K PAGEVIEWS</h2>
         <RangeInput
           id="price"
           min={min}
@@ -56,6 +58,7 @@ export function Pricing() {
           value={price}
           onChange={(e) => {
             setPrice(e.target.value);
+            setView(e.target.value * viewConstant);
           }}
         />
         <Label htmlFor="price">
@@ -114,7 +117,7 @@ const Article = styled.article`
     margin-inline: auto;
   }
 
-  p {
+  h2 {
     letter-spacing: 2px;
     font-size: ${typeScale.helperText};
     font-weight: ${weightScale.extraBold};
