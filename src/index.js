@@ -9,6 +9,8 @@ root.render(
   <div>
     <GlobalStyles />
     <Header />
-    <Pricing />
+    <main>
+      <Pricing />
+    </main>
   </div>
 );
