@@ -15,7 +15,10 @@ export function Pricing() {
   const normalMax = 24;
   const discount = 25;
   const viewConstant = 6.25;
+<<<<<<< HEAD
 
+=======
+>>>>>>> ea581a003c5b2ead58536e2f68abb31050e2db8d
   const [price, setPrice] = useState(normalMin * 2);
   const [min, setMin] = useState(normalMin);
   const [max, setMax] = useState(normalMax);
