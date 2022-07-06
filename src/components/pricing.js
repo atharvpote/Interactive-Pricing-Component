@@ -137,6 +137,7 @@ const RangeInput = styled.input.attrs({ type: "range" })`
   /* Custom input range have different margin block in chrome so had to adjust it with prefix */
   -webkit-margin-before: 1.75rem;
   -webkit-margin-after: 1.75rem;
+  padding-inline: 1rem;
   appearance: none;
   width: 100%;
   background: transparent;
