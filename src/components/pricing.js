@@ -15,10 +15,8 @@ export function Pricing() {
   const normalMax = 24;
   const discount = 25;
   const viewConstant = 6.25;
-<<<<<<< HEAD
+  const viewConstantDiscount = 8.33;
 
-=======
->>>>>>> ea581a003c5b2ead58536e2f68abb31050e2db8d
   const [price, setPrice] = useState(normalMin * 2);
   const [min, setMin] = useState(normalMin);
   const [max, setMax] = useState(normalMax);
@@ -37,11 +35,13 @@ export function Pricing() {
       setMin(newMin);
       setMax(newMax);
       setPricePerLabel("year");
+      setView(Math.ceil(newMin * 2 * viewConstantDiscount));
     } else {
       setPrice(normalMin * 2);
       setMin(normalMin);
       setMax(normalMax);
       setPricePerLabel("month");
+      setView(Math.ceil(normalMin * 2 * viewConstant));
     }
   };
 
@@ -62,7 +62,11 @@ export function Pricing() {
           value={price}
           onChange={(e) => {
             setPrice(e.target.value);
-            setView(e.target.value * viewConstant);
+            if (showYearlyPrice) {
+              setView(Math.ceil(e.target.value * viewConstantDiscount));
+            } else {
+              setView(e.target.value * viewConstant);
+            }
           }}
         />
         <Label htmlFor="price">
