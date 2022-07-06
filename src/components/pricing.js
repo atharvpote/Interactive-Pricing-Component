@@ -132,13 +132,6 @@ const Section = styled.div`
   }
 `;
 
-const BottomSection = styled(Section)`
-  @media (min-width: 536px) {
-    display: flex;
-    justify-content: space-between;
-  }
-`;
-
 const RangeInput = styled.input.attrs({ type: "range" })`
   margin-block: 1rem;
   /* Custom input range have different margin block in chrome so had to adjust it with prefix */
@@ -334,6 +327,13 @@ const Discount = styled.span`
 const Divider = styled.div`
   height: 2px;
   background-color: ${neutrals.lightGrayishBlueV1};
+`;
+
+const BottomSection = styled(Section)`
+  @media (min-width: 536px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const FeaturesList = styled.ul`
