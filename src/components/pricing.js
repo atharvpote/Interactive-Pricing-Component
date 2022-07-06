@@ -11,37 +11,30 @@ import {
 } from "../utils";
 
 export function Pricing() {
-  const normalMin = 8;
-  const normalMax = 24;
-  const discount = 25;
-  const viewConstant = 6.25;
-  const viewConstantDiscount = 8.33;
+  const minViews = 50;
+  const maxViews = 150;
+  const normalViewConstant = 6.25;
+  const discountViewConstant = 8.33;
 
-  const [price, setPrice] = useState(normalMin * 2);
-  const [min, setMin] = useState(normalMin);
-  const [max, setMax] = useState(normalMax);
+  const [price, setPrice] = useState(
+    Math.floor((minViews * 2) / normalViewConstant)
+  );
+  const [min, setMin] = useState(Math.floor(minViews / normalViewConstant));
+  const [max, setMax] = useState(Math.floor(maxViews / normalViewConstant));
   const [showYearlyPrice, setShowYearlyPrice] = useState(false);
-  const [pricePerLabel, setPricePerLabel] = useState("month");
-  const [view, setView] = useState(price * viewConstant);
+  const [view, setView] = useState(price * normalViewConstant);
 
   const switchPrice = (e) => {
     setShowYearlyPrice(!showYearlyPrice);
 
     if (e.target.checked) {
-      const newMin = (normalMin - (normalMin * discount) / 100) * 12;
-      const newMax = (normalMax - (normalMax * discount) / 100) * 12;
-
-      setPrice(newMin * 2);
-      setMin(newMin);
-      setMax(newMax);
-      setPricePerLabel("year");
-      setView(Math.ceil(newMin * 2 * viewConstantDiscount));
+      setMin(Math.floor(minViews / discountViewConstant));
+      setMax(Math.floor(maxViews / discountViewConstant));
+      setPrice(Math.round(view / discountViewConstant));
     } else {
-      setPrice(normalMin * 2);
-      setMin(normalMin);
-      setMax(normalMax);
-      setPricePerLabel("month");
-      setView(Math.ceil(normalMin * 2 * viewConstant));
+      setMin(Math.floor(minViews / normalViewConstant));
+      setMax(Math.floor(maxViews / normalViewConstant));
+      setPrice(Math.round(view / normalViewConstant));
     }
   };
 
@@ -63,14 +56,14 @@ export function Pricing() {
           onChange={(e) => {
             setPrice(e.target.value);
             if (showYearlyPrice) {
-              setView(Math.ceil(e.target.value * viewConstantDiscount));
+              setView(Math.round(e.target.value * discountViewConstant));
             } else {
-              setView(e.target.value * viewConstant);
+              setView(e.target.value * normalViewConstant);
             }
           }}
         />
         <Label htmlFor="price">
-          <span>${price}.00</span> / {pricePerLabel}
+          <span>${price}.00</span> / month
         </Label>
         <SwitchContainer>
           <span>Monthly Billing</span>
