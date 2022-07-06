@@ -163,6 +163,10 @@ const RangeInput = styled.input.attrs({ type: "range" })`
     margin-top: ${rem("-14px")};
     transition: box-shadow 0.5s;
 
+    &:active {
+      box-shadow: 0 0 25px 1px ${defaultTheme.sliderBackground};
+    }
+
     @media (hover: hover) {
       &:hover {
         box-shadow: 0 0 25px 1px ${defaultTheme.sliderBackground};
@@ -180,6 +184,16 @@ const RangeInput = styled.input.attrs({ type: "range" })`
     background-position: center;
     background-color: ${defaultTheme.sliderBackground};
     cursor: pointer;
+
+    &:active {
+      box-shadow: 0 0 25px 1px ${defaultTheme.sliderBackground};
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: 0 0 25px 1px ${defaultTheme.sliderBackground};
+      }
+    }
   }
 
   &::-webkit-slider-runnable-track {
