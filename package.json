@@ -7,7 +7,7 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "lint:css": "stylelint './src/**/*.js'",
+    "lint:css": "stylelint --custom-syntax '@stylelint/postcss-css-in-js' './src/**/*.js'",
     "lint:js": "eslint './src/**/*.js'",
     "format": "prettier --write './src/**/*.{html,js}'"
   },
@@ -20,11 +20,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "babel-plugin-styled-components": "^2.0.7",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.30.1",
     "parcel": "^2.6.2",
+    "postcss": "^8.4.14",
+    "postcss-syntax": "^0.36.2",
     "prettier": "^2.7.1",
     "process": "^0.11.10",
     "stylelint": "^14.9.1",
