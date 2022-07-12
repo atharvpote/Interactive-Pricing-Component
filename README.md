@@ -52,9 +52,6 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) - CSS in JS library
 - [Polished](https://polished.js.org/) - Styling toolset
-- [Parcel](https://parceljs.org/) - Package bundler
-- [ESLint](https://eslint.org/) - JS Linter
-- [Stylelint](https://stylelint.io/) - CSS Linter
 
 ### What I learned
 
